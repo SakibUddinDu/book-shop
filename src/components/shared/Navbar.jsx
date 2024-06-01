@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import LogoutBtn from './auth/LogoutBtn';
+import { auth } from './../../firebase/firebase.config';
 
 function Navbar() {
+  const [user, loading, error] = useAuthState(auth);
+  const avatar = user?.displayName.slice(0,1)
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -49,7 +54,7 @@ function Navbar() {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/blogs">Blogs</Link>
           </li>
           <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -57,12 +62,26 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/register" className="btn">
-          Register
-        </Link>
-        <Link to="/login" className="btn">
-          Login
-        </Link>
+        {!user?.email ? (
+          <>
+            <Link to="/register" className="btn">
+              Register
+            </Link>
+            <Link to="/login" className="btn ml-4">
+              Login
+            </Link>
+          </>
+        ) : (
+          <>
+            <LogoutBtn/>
+            
+            <div className="avatar placeholder ml-2">
+              <div className="bg-neutral text-neutral-content rounded-full w-8">
+                <span className="text-xs">{avatar}</span>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

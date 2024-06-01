@@ -1,7 +1,11 @@
+import AboutBookPress from './../components/about/AboutBookPress';
+import Banner from './../components/shared/Banner';
+
 function About() {
     return (
         <div>
-            <h1>This is about</h1>
+            <Banner/>
+            <AboutBookPress/>
         </div>
     )
 }
