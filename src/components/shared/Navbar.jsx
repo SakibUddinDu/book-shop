@@ -5,7 +5,7 @@ import { auth } from './../../firebase/firebase.config';
 
 function Navbar() {
   const [user, loading, error] = useAuthState(auth);
-  const avatar = user?.displayName.slice(0,1)
+  const avatar = user?.displayName?.slice(0,1)
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">

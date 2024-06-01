@@ -11,7 +11,7 @@ function LogoutBtn() {
           alert('You are sign out');
         }
       }
-  return <button onClick={()=> handleSignOut()} className="btn">Logout</button>;
+  return <button onClick={()=> handleSignOut()} className="btn btn-primary">Logout</button>;
 }
 
 export default LogoutBtn;

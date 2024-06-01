@@ -19,7 +19,7 @@ function GoogleLoginBtn() {
 
   useEffect(() => {
     if (user) {
-      navigate(from, { replace: true });
+      navigate(from, { replace: true } || '/');
     }
   }, [user, from, navigate]);
 
