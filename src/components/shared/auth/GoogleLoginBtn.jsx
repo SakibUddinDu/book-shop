@@ -1,24 +1,28 @@
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { auth } from "../../../firebase/firebase.config";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 function GoogleLoginBtn() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
-// console.log(from)
-  const handleGoogleLogin = () => {
-    console.log("clicked");
-    signInWithGoogle();
-    // navigate(from, { replace: true })
+
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      toast.error("Login failed: " + error.message);
+    }
   };
 
   useEffect(() => {
     if (user) {
+      toast.success("You logged in successfully");
       navigate(from, { replace: true } || '/');
     }
   }, [user, from, navigate]);

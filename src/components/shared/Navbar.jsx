@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import LogoutBtn from './auth/LogoutBtn';
-import { auth } from './../../firebase/firebase.config';
+import LogoutBtn from "./auth/LogoutBtn";
+import { auth } from "./../../firebase/firebase.config";
 
 function Navbar() {
   const [user, loading, error] = useAuthState(auth);
-  const avatar = user?.displayName?.slice(0,1)
+  const avatar = user?.displayName?.slice(0, 1) || "U";
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -38,11 +38,14 @@ function Navbar() {
               <Link to="/about">About</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/blogs">Blogs</Link>
+            </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
             </li>
           </ul>
         </div>
-        <Link className="btn btn-ghost text-xl">daisyUI</Link>
+        <Link className="btn btn-ghost text-xl">BooksPress</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -62,7 +65,7 @@ function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        {!user?.email ? (
+        {!user? (
           <>
             <Link to="/register" className="btn">
               Register
@@ -73,8 +76,8 @@ function Navbar() {
           </>
         ) : (
           <>
-            <LogoutBtn/>
-            
+            <LogoutBtn />
+
             <div className="avatar placeholder ml-2">
               <div className="bg-neutral text-neutral-content rounded-full w-8">
                 <span className="text-xs">{avatar}</span>

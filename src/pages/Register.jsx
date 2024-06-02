@@ -5,6 +5,7 @@ import GithubLoginBtn from "../components/shared/auth/GithubLoginBtn";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/firebase.config";
+import { toast } from 'react-hot-toast';
 
 function Register() {
   const navigate = useNavigate()
@@ -36,10 +37,11 @@ function Register() {
     try {
       await createUserWithEmailAndPassword(form.email, form.password);
       if (auth.currentUser) {
+        toast.success('You are logged in successfully')
         navigate("/");
       }
     } catch (err) {
-      console.error("Error creating user:", err);
+      toast.error("Error creating user:", err);
     }
   };
 
