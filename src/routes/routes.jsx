@@ -5,9 +5,11 @@ import About from "./../pages/About";
 import Blogs from "../pages/Blogs";
 import Login from "./../pages/Login";
 import Register from "./../pages/Register";
-import DashboardLayout from './../layout/DashboardLayout';
-import PrivateRoute from './PrivateRoute';
-
+import DashboardLayout from "./../layout/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
+import DashboardHome from "./../pages/dashboard/DashboardHome";
+import Booklist from '../pages/dashboard/Booklist';
+import Categorylist from "../pages/dashboard/Categorylist";
 
 export const router = createBrowserRouter([
   {
@@ -43,5 +45,19 @@ export const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>
     ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "book-list",
+        element: <Booklist />,
+      },
+      {
+        path: "category-list",
+        element: <Categorylist />,
+      },
+    ],
   },
 ]);

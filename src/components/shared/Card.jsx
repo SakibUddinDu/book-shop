@@ -1,12 +1,12 @@
-function Blog({blog}) {
-    console.log(blog)
-    const {name, thumbnail, author, description} =blog
+function Card({CardItem}) {
+    console.log(CardItem)
+    const {name, thumbnail, author, description} =CardItem
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
         <img
           src={thumbnail}
-          alt="blogs"
+          alt="CardItems"
         />
       </figure>
       <div className="card-body">
@@ -20,4 +20,4 @@ function Blog({blog}) {
   );
 }
 
-export default Blog;
+export default Card;

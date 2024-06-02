@@ -1,0 +1,131 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "price": 10.99,
+      "categoryId": 1,
+      "category": "Classic Literature",
+      "description": "A novel about the serious issues of rape and racial inequality.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/71HMJiEu7JL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 2,
+      "name": "1984",
+      "author": "George Orwell",
+      "price": 8.99,
+      "categoryId": 2,
+      "category": "Science Fiction",
+      "description": "A dystopian social science fiction novel and cautionary tale about the future.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81erI7sNo5L._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 3,
+      "name": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "price": 12.99,
+      "categoryId": 1,
+      "category": "Classic Literature",
+      "description": "A story about the jazz age in the United States in the 1920s.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81OkWjcf4WL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 4,
+      "name": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "price": 11.99,
+      "categoryId": 1,
+      "category": "Classic Literature",
+      "description": "A novel about the events around a teenager named Holden Caulfield.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/913C+MR3S5L._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Brave New World",
+      "author": "Aldous Huxley",
+      "price": 9.99,
+      "categoryId": 2,
+      "category": "Science Fiction",
+      "description": "A dystopian novel set in a futuristic World State.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/71PNGYHykrL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 6,
+      "name": "The Da Vinci Code",
+      "author": "Dan Brown",
+      "price": 14.99,
+      "categoryId": 3,
+      "category": "Mystery",
+      "description": "A mystery thriller novel that explores an alternative religious history.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81LZXcfKqJL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "price": 18.99,
+      "categoryId": 4,
+      "category": "Non-Fiction",
+      "description": "An exploration of the history and impact of Homo sapiens.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/917Bc9C1MlL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 8,
+      "name": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "price": 13.99,
+      "categoryId": 5,
+      "category": "Fantasy",
+      "description": "A fantasy novel and prelude to The Lord of the Rings.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/81kZ3Gl3WKL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Harry Potter and the Philosopher's Stone",
+      "author": "J.K. Rowling",
+      "price": 10.99,
+      "categoryId": 5,
+      "category": "Fantasy",
+      "description": "The first book in the Harry Potter series.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/813aV273-rL._AC_UL254_SR254,254_.jpg"
+    },
+    {
+      "id": 10,
+      "name": "The Shining",
+      "author": "Stephen King",
+      "price": 9.99,
+      "categoryId": 3,
+      "category": "Mystery",
+      "description": "A horror novel about a family staying in an isolated hotel.",
+      "thumbnail": "https://images-na.ssl-images-amazon.com/images/I/812XbpMDovL._AC_UL254_SR254,254_.jpg"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Classic Literature",
+      "description": "Classic literature refers to the works of literature that are considered to be of high quality and lasting value, typically written in the 19th and early 20th centuries."
+    },
+    {
+      "id": 2,
+      "name": "Science Fiction",
+      "description": "Science fiction is a genre of speculative fiction that typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life."
+    },
+    {
+      "id": 3,
+      "name": "Mystery",
+      "description": "Mystery fiction is a genre of fiction usually involving a mysterious death or a crime to be solved. Often with a closed circle of suspects, each suspect must have a credible motive and a reasonable opportunity for committing the crime."
+    },
+    {
+      "id": 4,
+      "name": "Non-Fiction",
+      "description": "Non-fiction is a genre of literature that is based on facts and real events. It includes biographies, autobiographies, essays, memoirs, and journalistic works."
+    },
+    {
+      "id": 5,
+      "name": "Fantasy",
+      "description": "Fantasy is a genre of speculative fiction set in a fictional universe, often inspired by mythology and folklore. It typically features magical elements, supernatural phenomena, or imaginary creatures."
+    }
+  ]
+}

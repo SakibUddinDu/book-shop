@@ -45,7 +45,9 @@ function Navbar() {
             </li>
           </ul>
         </div>
-        <Link className="btn btn-ghost text-xl">BooksPress</Link>
+        <Link to="/" >
+          <img className="h-12 w-24" src="https://bookpress.themeperch.net/multi/wp-content/themes/bookpress/assets/images/logo.png" alt="" />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

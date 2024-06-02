@@ -1,5 +1,6 @@
-import Blog from "../components/blogs/Blog";
 import Banner from "../components/shared/Banner";
+import Card from './../components/shared/Card';
+
 const blogsData = [
     {
       "name": "Slow Horses (Deluxe Edition)",
@@ -53,9 +54,9 @@ function Blogs() {
   return (
     <div>
       <Banner />
-      <div className="flex gap-5 mt-12"> 
+      <div className="flex flex-wrap gap-5 mt-12"> 
       {
-        blogsData.map((blog)=><Blog blog={blog}/>)
+        blogsData.map((blog)=><Card CardItem={blog}/>)
       }
       </div>
     </div>

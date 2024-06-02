@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import LogoutBtn from "../components/shared/auth/LogoutBtn";
 
 function DashboardLayout() {
@@ -25,10 +25,10 @@ function DashboardLayout() {
          <ul className="menu p-4 w-80 min-h-full text-base-content">
             {/* Sidebar content here */}
             <li>
-              <a>Sidebar Item 1</a>
+              <Link to="/dashboard/book-list"> Book List</Link> 
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link to="/dashboard/category-list"> Category List</Link> 
             </li>
           </ul>
          
