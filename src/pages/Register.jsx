@@ -1,5 +1,5 @@
 import loginGif from "../assets/login-security.gif";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import GoogleLoginBtn from "../components/shared/auth/GoogleLoginBtn";
 import GithubLoginBtn from "../components/shared/auth/GithubLoginBtn";
 import { useState } from "react";
@@ -8,7 +8,9 @@ import { auth } from "../firebase/firebase.config";
 import { toast } from 'react-hot-toast';
 
 function Register() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
 
@@ -38,7 +40,7 @@ function Register() {
       await createUserWithEmailAndPassword(form.email, form.password);
       if (auth.currentUser) {
         toast.success('You are logged in successfully')
-        navigate("/");
+        navigate(from, { replace: true } || '/');
       }
     } catch (err) {
       toast.error("Error creating user:", err);

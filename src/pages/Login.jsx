@@ -1,14 +1,17 @@
 import loginGif from "../assets/login-security.gif";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import GoogleLoginBtn from "../components/shared/auth/GoogleLoginBtn";
 import GithubLoginBtn from "../components/shared/auth/GithubLoginBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from "../firebase/firebase.config";
-
+import { toast } from 'react-hot-toast';
 
 function Login() {
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -29,19 +32,34 @@ function Login() {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await signInWithEmailAndPassword(form.email, form.password);
+  //     if (auth.currentUser) {
+  //       toast.success('You are logged in successfully!');
+  //       navigate("/");
+  //     }
+  //   } catch (err) {
+  //     toast.error('Error logging in: ' + err.message);
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(form.email, form.password);
-      if (auth.currentUser) {
-        toast.success('you are logged in successful!');
-        navigate("/");
-      }
     } catch (err) {
       toast.error('Error logging in: ' + err.message);
     }
   };
-  
+
+  useEffect(() => {
+    if (user) {
+      toast.success('You are logged in successfully!');
+      navigate(from, { replace: true } || '/');
+    }
+  }, [user, navigate]);
 
   return (
     <div className="hero min-h-screen bg-base-200">
