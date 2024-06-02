@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import DashboardHome from "./../pages/dashboard/DashboardHome";
 import Booklist from '../pages/dashboard/Booklist';
 import Categorylist from "../pages/dashboard/Categorylist";
+import AddBook from "../pages/dashboard/AddBook";
+import EditBook from "../pages/dashboard/EditBook";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +59,14 @@ export const router = createBrowserRouter([
       {
         path: "category-list",
         element: <Categorylist />,
+      },
+      {
+        path: "add-book",
+        element: <AddBook />,
+      },
+      {
+        path: "edit-book/:id",
+        element: <EditBook/>,
       },
     ],
   },

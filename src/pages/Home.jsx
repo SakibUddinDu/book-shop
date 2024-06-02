@@ -36,7 +36,7 @@ function Home() {
 
       <div className="flex flex-wrap gap-5 mt-12 ">
         {booksData.map((book) => (
-          <Card CardItem={book} />
+          <Card key={book.id} CardItem={book} />
         ))}
       </div>
     </>

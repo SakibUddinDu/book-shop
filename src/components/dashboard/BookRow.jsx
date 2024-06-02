@@ -1,8 +1,10 @@
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-function BookRow({ book }) {
-  const { name, thumbnail, price, author } = book;
+function BookRow({ book, onDelete }) {
+  const { id, name, thumbnail, price, author } = book;
+
   return (
     <tr>
       <td>
@@ -21,14 +23,14 @@ function BookRow({ book }) {
         <p>{author}</p>
       </td>
       <td>{price}</td>
-      <th>
-        <button className="btn btn-ghost">
+      <td>
+        <Link to={`/dashboard/edit-book/${id}`} className="btn btn-ghost">
           <FaRegEdit />
-        </button>
-        <button className="btn btn-ghost">
+        </Link>
+        <button onClick={() => onDelete(id)} className="btn btn-ghost">
           <MdDelete />
         </button>
-      </th>
+      </td>
     </tr>
   );
 }

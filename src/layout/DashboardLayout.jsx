@@ -30,6 +30,9 @@ function DashboardLayout() {
             <li>
               <Link to="/dashboard/category-list"> Category List</Link> 
             </li>
+            <li>
+              <Link to="/dashboard/add-book"> Add book</Link> 
+            </li>
           </ul>
          
          <LogoutBtn/>  

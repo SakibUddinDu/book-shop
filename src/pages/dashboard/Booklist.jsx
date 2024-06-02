@@ -19,6 +19,17 @@ function Booklist() {
     loader();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/books/${id}`);
+      if (window.confirm("Are you sure you want to delete this book?")) {
+        setBooksData(booksData.filter(book => book.id !== id));
+      }
+    } catch (error) {
+      console.error('Failed to delete the book', error);
+    }
+  }
+
   return (
     <div className="overflow-x-auto">
       <h1 className="text-xl">Books List</h1>
@@ -34,7 +45,7 @@ function Booklist() {
         </thead>
         <tbody>
           {booksData.map((book) => (
-            <BookRow book={book}></BookRow>
+            <BookRow key={book.id} book={book} onDelete={handleDelete}></BookRow>
           ))}
         </tbody>
         {/* foot */}
@@ -52,3 +63,4 @@ function Booklist() {
 }
 
 export default Booklist;
+
