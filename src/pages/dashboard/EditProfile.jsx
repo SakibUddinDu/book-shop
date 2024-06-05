@@ -1,18 +1,18 @@
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { toast } from 'react-hot-toast';
 
 function EditProfile() {
-    const navigate = useNavigate();
-    const userData = useLoaderData()
-    console.log(userData)
+  const navigate = useNavigate();
+  const userData = useLoaderData();
+  console.log(userData);
   const [formData, setFormData] = useState({
     email: userData?.email,
     name: userData?.name,
-    photoURL:userData?.photoURL,
+    photoURL: userData?.photoURL,
   });
-  console.log(formData)
+  console.log(formData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,16 +21,27 @@ function EditProfile() {
       [name]: value,
     }));
   };
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
+    const token = localStorage.getItem("token");
+
     e.preventDefault();
     try {
-        await axios.patch(`http://localhost:3000/user/${userData?._id}`, formData)
-        navigate("/");
-        toast.success("UserProfile updated Successfully!", { autoClose: 3000 });
-      } catch (error) {
-        console.error("Error updating UserProfile:", error);
-        toast.error("Oops! An error occurred. Please try again later.");
-      }
+      await axios.patch(
+        `https://bookshop-backend-x3im.onrender.com/user/${userData?._id}`,
+        formData,
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      navigate("/");
+      toast.success("UserProfile updated Successfully!", { autoClose: 3000 });
+    } catch (error) {
+      console.error("Error updating UserProfile:", error);
+      toast.error("Oops! An error occurred. Please try again later.");
+    }
     console.log("clicked");
   };
 

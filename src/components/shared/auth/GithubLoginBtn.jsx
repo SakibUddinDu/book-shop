@@ -1,9 +1,9 @@
-import { FaGithub } from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
-import { useSignInWithGithub } from "react-firebase-hooks/auth";
-import { auth } from "./../../../firebase/firebase.config";
-import { toast } from "react-hot-toast";
 import axios from "axios";
+import { useSignInWithGithub } from "react-firebase-hooks/auth";
+import { toast } from "react-hot-toast";
+import { FaGithub } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
+import { auth } from "./../../../firebase/firebase.config";
 
 function GithubLoginBtn() {
   const [signInWithGithub, user, loading, error] = useSignInWithGithub(auth);
@@ -13,13 +13,15 @@ function GithubLoginBtn() {
   const handleGithubLogin = async () => {
     try {
       const data = await signInWithGithub();
+
+      console.log(data)
       if (data?.user?.photoURL) {
         const userInfo = {
           photoURL: data?.user?.photoURL,
           name: data?.user?.displayName,
         };
         const response = await axios.post(
-          "http://localhost:3000/user",
+          "https://bookshop-backend-x3im.onrender.com/user",
           userInfo,
           {
             headers: {
@@ -27,6 +29,7 @@ function GithubLoginBtn() {
             },
           }
         );
+
       }
     } catch (error) {
       toast.error("Login failed: " + error.message);

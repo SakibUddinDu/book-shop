@@ -1,11 +1,11 @@
-import img from "../assets/heroImage.png";
 import { useEffect, useState } from "react";
+import img from "../assets/heroImage.png";
 import Card from "../components/shared/Card";
 function Home() {
   const [booksData, setBooksData] = useState([]);
   useEffect(() => {
     async function loader() {
-      const res = await fetch("http://localhost:3000/books");
+      const res = await fetch("https://bookshop-backend-x3im.onrender.com/books");
       const data = await res.json();
       setBooksData(data);
     }
@@ -36,7 +36,7 @@ function Home() {
 
       <div className="flex flex-wrap gap-5 mt-12 ">
         {booksData.map((book) => (
-          <Card key={book.id} CardItem={book} />
+          <Card key={book._id} CardItem={book} />
         ))}
       </div>
     </>

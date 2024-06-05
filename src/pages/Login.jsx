@@ -32,19 +32,6 @@ function Login() {
     }));
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await signInWithEmailAndPassword(form.email, form.password);
-  //     if (auth.currentUser) {
-  //       toast.success('You are logged in successfully!');
-  //       navigate("/");
-  //     }
-  //   } catch (err) {
-  //     toast.error('Error logging in: ' + err.message);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -115,7 +102,7 @@ function Login() {
           </form>
           <div className="form-control mt-6">
             <GoogleLoginBtn />
-            {/* <GithubLoginBtn /> */}
+            <GithubLoginBtn />
           </div>
         </div>
         <div className="text-center lg:text-left">

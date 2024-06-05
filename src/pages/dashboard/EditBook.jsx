@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import toast from "react-hot-toast";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditBook = () => {
   const navigate = useNavigate();
@@ -12,13 +12,13 @@ const EditBook = () => {
   useEffect(() => {
     const loader = async () => {
       const singleBookData = await axios.get(
-        `http://localhost:3000/books/${id}`
+        `https://bookshop-backend-x3im.onrender.com/books/${id}`
       );
       if (singleBookData.status === 200) {
         setBookData(singleBookData.data);
       }
     };
-    loader()
+    loader();
   }, []);
 
   const handleChange = (e) => {
@@ -30,11 +30,18 @@ const EditBook = () => {
   };
 
   const handleSubmit = async (e) => {
+    const token = localStorage.getItem('token')
+
+    console.log(token);
     e.preventDefault();
 
     try {
-      await axios.patch(`http://localhost:3000/books/${id}`, formData)
-     
+      await axios.patch(`https://bookshop-backend-x3im.onrender.com/books/${id}`, formData, {
+        headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+          Authorization: `Bearer ${token}`,
+        },
+      });
       navigate("/");
       toast.success("Book created Successfully!", { autoClose: 3000 });
     } catch (error) {
@@ -42,7 +49,6 @@ const EditBook = () => {
       toast.error("Oops! An error occurred. Please try again later.");
     }
   };
-
 
   return (
     <main className="py-6 2xl:px-6">

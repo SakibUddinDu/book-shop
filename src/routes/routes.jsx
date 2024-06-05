@@ -1,18 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layout/RootLayout";
-import Home from "./../pages/Home";
-import About from "./../pages/About";
 import Blogs from "../pages/Blogs";
-import Login from "./../pages/Login";
-import Register from "./../pages/Register";
-import DashboardLayout from "./../layout/DashboardLayout";
-import PrivateRoute from "./PrivateRoute";
-import DashboardHome from "./../pages/dashboard/DashboardHome";
+import AddBook from "../pages/dashboard/AddBook";
 import Booklist from '../pages/dashboard/Booklist';
 import Categorylist from "../pages/dashboard/Categorylist";
-import AddBook from "../pages/dashboard/AddBook";
 import EditBook from "../pages/dashboard/EditBook";
+import DashboardLayout from "./../layout/DashboardLayout";
+import About from "./../pages/About";
+import DashboardHome from "./../pages/dashboard/DashboardHome";
 import EditProfile from './../pages/dashboard/EditProfile';
+import Home from "./../pages/Home";
+import Login from "./../pages/Login";
+import Register from "./../pages/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -73,7 +73,7 @@ export const router = createBrowserRouter([
         path: "profile/edit/:id",
         element: <EditProfile/>,
         loader: ({params})=>{
-         return fetch(`http://localhost:3000/user/get/${params.id}`)
+         return fetch(`https://bookshop-backend-x3im.onrender.com/user/get/${params.id}`)
         }
       },
     ],

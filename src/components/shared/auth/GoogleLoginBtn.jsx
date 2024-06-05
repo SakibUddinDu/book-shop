@@ -1,10 +1,10 @@
-import { FaGoogle } from "react-icons/fa";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useNavigate, useLocation } from "react-router-dom";
-import { auth } from "../../../firebase/firebase.config";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
 import axios from "axios";
+import { useEffect } from "react";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
+import { auth } from "../../../firebase/firebase.config";
 
 function GoogleLoginBtn() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -21,12 +21,13 @@ function GoogleLoginBtn() {
           name: data.user.displayName,
           photoURL: data.user.photoURL
         };
-        const response = await axios.post("http://localhost:3000/user", userInfo, {
+        const response = await axios.post("https://bookshop-backend-x3im.onrender.com/user", userInfo, {
           headers: {
             "Content-Type": "application/json",
           },
         });
-        console.log(response.data);
+        await localStorage.setItem("token", response.data.token)
+        // console.log(response.data.token);
       }
     } catch (error) {
       console.error("Google login error:", error);

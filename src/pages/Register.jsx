@@ -1,12 +1,11 @@
-import loginGif from "../assets/login-security.gif";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import GoogleLoginBtn from "../components/shared/auth/GoogleLoginBtn";
-import GithubLoginBtn from "../components/shared/auth/GithubLoginBtn";
+import axios from "axios";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../firebase/firebase.config";
 import { toast } from "react-hot-toast";
-import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import loginGif from "../assets/login-security.gif";
+import GoogleLoginBtn from "../components/shared/auth/GoogleLoginBtn";
+import { auth } from "../firebase/firebase.config";
 
 function Register() {
   const navigate = useNavigate();
@@ -49,7 +48,7 @@ function Register() {
         };
         //todo : mongodb data is not creATED
         const response = await axios.post(
-          "http://localhost:3000/user",
+          "https://bookshop-backend-x3im.onrender.com/user",
           userInfo,
           {
             headers: {

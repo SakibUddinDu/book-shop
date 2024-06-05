@@ -1,8 +1,7 @@
-
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
   const navigate = useNavigate();
@@ -24,10 +23,15 @@ const AddBook = () => {
   };
 
   const handleSubmit = async (e) => {
+    const token = localStorage.getItem("token");
     e.preventDefault();
-
     try {
-      await axios.post('http://localhost:3000/books', formData)
+      await axios.post("https://bookshop-backend-x3im.onrender.com/books", formData, {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setFormData({
         name: "",
         author: "",
@@ -43,7 +47,6 @@ const AddBook = () => {
       toast.error("Oops! An error occurred. Please try again later.");
     }
   };
-
 
   return (
     <main className="py-6 2xl:px-6">
@@ -141,4 +144,3 @@ const AddBook = () => {
 };
 
 export default AddBook;
-

@@ -9,7 +9,7 @@ function Categorylist() {
   useEffect(() => {
     const loader = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/categories");
+        const response = await axios.get("https://bookshop-backend-x3im.onrender.com/categories");
         if (response.status === 200) {
           setCategoriesData(response.data); // Ensure you're setting the array of categories here
         }
