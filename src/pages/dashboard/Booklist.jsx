@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BookRow from "../../components/dashboard/BookRow";
+import toast from "react-hot-toast";
 
 function Booklist() {
   const [booksData, setBooksData] = useState([]);
@@ -23,7 +24,8 @@ function Booklist() {
     try {
       await axios.delete(`http://localhost:3000/books/${id}`);
       if (window.confirm("Are you sure you want to delete this book?")) {
-        setBooksData(booksData.filter(book => book.id !== id));
+        setBooksData(booksData?.filter(book => book._id !== id));
+        toast.success("You deleted the book Successfully")
       }
     } catch (error) {
       console.error('Failed to delete the book', error);
@@ -44,8 +46,8 @@ function Booklist() {
           </tr>
         </thead>
         <tbody>
-          {booksData.map((book) => (
-            <BookRow key={book.id} book={book} onDelete={handleDelete}></BookRow>
+          {booksData?.map((book) => (
+            <BookRow key={book._id} book={book} onDelete={handleDelete}></BookRow>
           ))}
         </tbody>
         {/* foot */}

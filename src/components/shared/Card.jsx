@@ -1,5 +1,4 @@
 function Card({CardItem}) {
-    console.log(CardItem)
     const {name, thumbnail, author, description} =CardItem
   return (
     <div className="card w-96 bg-base-100 shadow-xl">

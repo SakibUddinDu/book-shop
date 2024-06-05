@@ -8,7 +8,6 @@ const EditBook = () => {
   const { id } = useParams();
   const [bookData, setBookData] = useState({});
   const [formData, setFormData] = useState(bookData);
-  // console.log(bookData)
 
   useEffect(() => {
     const loader = async () => {
@@ -35,14 +34,7 @@ const EditBook = () => {
 
     try {
       await axios.patch(`http://localhost:3000/books/${id}`, formData)
-      // setFormData({
-      //   name: "",
-      //   author: "",
-      //   thumbnail: "",
-      //   price: 0,
-      //   rating: 0,
-      //   featured: false,
-      // });
+     
       navigate("/");
       toast.success("Book created Successfully!", { autoClose: 3000 });
     } catch (error) {

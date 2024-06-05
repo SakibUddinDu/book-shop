@@ -1,5 +1,5 @@
-import aboutImage from "../../assets/about-bookpress-1.png";
 import { IoIosArrowDropright } from "react-icons/io";
+import aboutImage from "../../assets/about-bookpress-1.png";
 <IoIosArrowDropright />;
 
 function AboutBookPress() {
@@ -39,7 +39,7 @@ function AboutBookPress() {
           </ul>
 
           <div className="mt-3">
-            <a href="#" class="btn btn-primary btn-round">
+            <a href="#" className="btn btn-primary btn-round">
               Learn More
             </a>
           </div>

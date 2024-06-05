@@ -5,7 +5,8 @@ import GithubLoginBtn from "../components/shared/auth/GithubLoginBtn";
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../firebase/firebase.config";
-import { toast } from 'react-hot-toast';
+import { toast } from "react-hot-toast";
+import axios from "axios";
 
 function Register() {
   const navigate = useNavigate();
@@ -37,13 +38,33 @@ function Register() {
       return;
     }
     try {
-      await createUserWithEmailAndPassword(form.email, form.password);
+      const data = await createUserWithEmailAndPassword(
+        form.email,
+        form.password
+      );
+      if (data?.user?.email) {
+        const userInfo = {
+          email: data?.user?.email,
+          name: form.name,
+        };
+        //todo : mongodb data is not creATED
+        const response = await axios.post(
+          "http://localhost:3000/user",
+          userInfo,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+      }
       if (auth.currentUser) {
-        toast.success('You are logged in successfully')
-        navigate(from, { replace: true } || '/');
+        toast.success("You are logged in successfully");
+        navigate(from, { replace: true } || "/");
       }
     } catch (err) {
-      toast.error("Error creating user:", err);
+      console.error("Error creating user:", err); // Log the error for debugging
+      toast.error("Error creating user: " + err.message); // Ensure the message is a string
     }
   };
 
@@ -128,7 +149,7 @@ function Register() {
             </p>
           </form>
           <GoogleLoginBtn />
-          <GithubLoginBtn />
+          {/* <GithubLoginBtn /> */}
         </div>
         <div className="text-center lg:text-left">
           <img src={loginGif} alt="Login Security" />
@@ -139,4 +160,3 @@ function Register() {
 }
 
 export default Register;
-

@@ -12,6 +12,7 @@ import Booklist from '../pages/dashboard/Booklist';
 import Categorylist from "../pages/dashboard/Categorylist";
 import AddBook from "../pages/dashboard/AddBook";
 import EditBook from "../pages/dashboard/EditBook";
+import EditProfile from './../pages/dashboard/EditProfile';
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +68,13 @@ export const router = createBrowserRouter([
       {
         path: "edit-book/:id",
         element: <EditBook/>,
+      },
+      {
+        path: "profile/edit/:id",
+        element: <EditProfile/>,
+        loader: ({params})=>{
+         return fetch(`http://localhost:3000/user/get/${params.id}`)
+        }
       },
     ],
   },

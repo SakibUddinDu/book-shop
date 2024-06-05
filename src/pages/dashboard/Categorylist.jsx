@@ -36,9 +36,6 @@ function Categorylist() {
           {
             categoriesData.map((category, index)=><CategoryRow key={category.id} index={index} category={category}></CategoryRow>)
           }
-
-         
-         
         </tbody>
       </table>
     </div>

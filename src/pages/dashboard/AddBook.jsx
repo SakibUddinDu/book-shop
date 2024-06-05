@@ -44,7 +44,6 @@ const AddBook = () => {
     }
   };
 
-  console.log(formData)
 
   return (
     <main className="py-6 2xl:px-6">

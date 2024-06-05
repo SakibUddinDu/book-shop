@@ -115,7 +115,7 @@ function Login() {
           </form>
           <div className="form-control mt-6">
             <GoogleLoginBtn />
-            <GithubLoginBtn />
+            {/* <GithubLoginBtn /> */}
           </div>
         </div>
         <div className="text-center lg:text-left">

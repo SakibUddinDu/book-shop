@@ -29,6 +29,7 @@ const blogsData = [
       "rating": "5",
       "featured": false,
       'description':' Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero adipisci id, porro dolorum rem ex, facere error tempora, unde ipsa sapiente aspernatur iste fugiat ipsam! Laudantium aut sequi sapiente facilis!',
+      "id": "a046cd38-3a8e-4aeb-9195-hdiuffdhshbrjdf"
     },
     {
       "name": "JavaScript from Beginner to Professional",
@@ -56,7 +57,7 @@ function Blogs() {
       <Banner />
       <div className="flex flex-wrap gap-5 mt-12"> 
       {
-        blogsData.map((blog)=><Card CardItem={blog}/>)
+        blogsData.map((blog)=><Card key={blog.id} CardItem={blog}/>)
       }
       </div>
     </div>

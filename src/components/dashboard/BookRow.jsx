@@ -3,7 +3,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function BookRow({ book, onDelete }) {
-  const { id, name, thumbnail, price, author } = book;
+  const { _id, name, thumbnail, price, author } = book;
 
   return (
     <tr>
@@ -24,10 +24,10 @@ function BookRow({ book, onDelete }) {
       </td>
       <td>{price}</td>
       <td>
-        <Link to={`/dashboard/edit-book/${id}`} className="btn btn-ghost">
+        <Link to={`/dashboard/edit-book/${_id}`} className="btn btn-ghost">
           <FaRegEdit />
         </Link>
-        <button onClick={() => onDelete(id)} className="btn btn-ghost">
+        <button onClick={() => onDelete(_id)} className="btn btn-ghost">
           <MdDelete />
         </button>
       </td>

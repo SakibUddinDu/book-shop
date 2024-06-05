@@ -25,6 +25,9 @@ function DashboardLayout() {
          <ul className="menu p-4 w-80 min-h-full text-base-content">
             {/* Sidebar content here */}
             <li>
+              <Link to="/dashboard">Profile </Link> 
+            </li>
+            <li>
               <Link to="/dashboard/book-list"> Book List</Link> 
             </li>
             <li>
